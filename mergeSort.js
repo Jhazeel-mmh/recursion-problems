@@ -12,12 +12,24 @@ function merge(arrayOne, arrayTwo) {
       finalArray[final++] = arrayTwo[two++];
     }
   }
-  for (; one <= arrayOneLength; one++)[
-    finalArray[final++] = arrayOne[one]
-  ]
-  for (; two <= arrayTwoLength; two++){
-    finalArray[final++] = arrayTwo[two]
+  for (; one < arrayOneLength; one++) {
+    finalArray[final++] = arrayOne[one];
+  }
+  for (; two < arrayTwoLength; two++) {
+    finalArray[final++] = arrayTwo[two];
   }
 
-  return finalArray
+  return finalArray;
 }
+
+function mergeSort(array) {
+  console.log("This was printed recursively");
+  if (array.length <= 1) return array;
+  let mid = Math.floor(array.length / 2);
+  let arrOne = mergeSort(array.slice(0, mid));
+  let arrTwo = mergeSort(array.slice(mid));
+  return merge(arrOne, arrTwo);
+}
+
+let input = [3, 2, 1, 13, 8, 5, 0, 1];
+console.log(mergeSort(input));
